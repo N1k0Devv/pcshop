@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Builder - TechStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="window.location.href='index.html'">
+                <div class="logo-icon"></div>
+                <span class="logo-text">TechStore</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="pc-builder.html" class="nav-link active">PC Builder</a>
+                <a href="my-builds.html" class="nav-link">My Builds</a>
+                <a href="login.html" class="nav-link" id="auth-link">Login</a>
+            </div>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" onclick="toggleChat()">
+                    <i class="fas fa-comments"></i>
+                </button>
+                <button class="nav-icon cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PC Builder Section -->
+    <section class="pc-builder">
+        <div class="container">
+            <div class="builder-header">
+                <h1><i class="fas fa-desktop"></i> Custom PC Builder</h1>
+                <p>Build your perfect PC with our interactive configurator</p>
+                <div class="builder-actions">
+                    <button class="btn btn-outline" onclick="clearBuild()">
+                        <i class="fas fa-trash"></i> Clear Build
+                    </button>
+                    <button class="btn btn-secondary" onclick="loadPresetBuild()">
+                        <i class="fas fa-magic"></i> Load Preset
+                    </button>
+                    <button class="btn btn-primary" onclick="saveBuild()">
+                        <i class="fas fa-save"></i> Save Build
+                    </button>
+                </div>
+            </div>
+
+            <div class="builder-layout">
+                <!-- Build Summary -->
+                <div class="build-summary">
+                    <div class="summary-card">
+                        <h3><i class="fas fa-calculator"></i> Build Summary</h3>
+                        <div class="build-name-input">
+                            <input type="text" id="build-name" placeholder="Enter build name..." value="My Custom PC">
+                        </div>
+                        <div class="price-breakdown">
+                            <div class="price-item">
+                                <span>Components:</span>
+                                <span id="components-total">$0.00</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Assembly Service:</span>
+                                <span id="assembly-cost">$99.00</span>
+                            </div>
+                            <div class="price-item total">
+                                <span>Total:</span>
+                                <span id="build-total">$99.00</span>
+                            </div>
+                        </div>
+                        <div class="compatibility-check">
+                            <div class="compatibility-item" id="power-check">
+                                <i class="fas fa-bolt"></i>
+                                <span>Power: <span class="status">Checking...</span></span>
+                            </div>
+                            <div class="compatibility-item" id="compatibility-check">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Compatibility: <span class="status">Good</span></span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-full" onclick="addBuildToCart()" id="add-build-btn" disabled>
+                            <i class="fas fa-shopping-cart"></i> Add Complete Build to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Component Selection -->
+                <div class="component-selection">
+                    <div class="component-category" data-category="cpu">
+                        <div class="category-header" onclick="toggleCategory('cpu')">
+                            <div class="category-info">
+                                <i class="fas fa-microchip"></i>
+                                <div>
+                                    <h3>Processor (CPU)</h3>
+                                    <p>The brain of your computer</p>
+                                </div>
+                            </div>
+                            <div class="category-status">
+                                <span class="selected-item" id="cpu-selected">Not Selected</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="category-content" id="cpu-content">
+                            <div class="component-grid" id="cpu-grid">
+                                <!-- CPU components will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-category" data-category="gpu">
+                        <div class="category-header" onclick="toggleCategory('gpu')">
+                            <div class="category-info">
+                                <i class="fas fa-tv"></i>
+                                <div>
+                                    <h3>Graphics Card (GPU)</h3>
+                                    <p>For gaming and visual processing</p>
+                                </div>
+                            </div>
+                            <div class="category-status">
+                                <span class="selected-item" id="gpu-selected">Not Selected</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="category-content" id="gpu-content">
+                            <div class="component-grid" id="gpu-grid">
+                                <!-- GPU components will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-category" data-category="motherboard">
+                        <div class="category-header" onclick="toggleCategory('motherboard')">
+                            <div class="category-info">
+                                <i class="fas fa-memory"></i>
+                                <div>
+                                    <h3>Motherboard</h3>
+                                    <p>Connects all components together</p>
+                                </div>
+                            </div>
+                            <div class="category-status">
+                                <span class="selected-item" id="motherboard-selected">Not Selected</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="category-content" id="motherboard-content">
+                            <div class="component-grid" id="motherboard-grid">
+                                <!-- Motherboard components will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-category" data-category="ram">
+                        <div class="category-header" onclick="toggleCategory('ram')">
+                            <div class="category-info">
+                                <i class="fas fa-memory"></i>
+                                <div>
+                                    <h3>Memory (RAM)</h3>
+                                    <p>System memory for multitasking</p>
+                                </div>
+                            </div>
+                            <div class="category-status">
+                                <span class="selected-item" id="ram-selected">Not Selected</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="category-content" id="ram-content">
+                            <div class="component-grid" id="ram-grid">
+                                <!-- RAM components will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-category" data-category="storage">
+                        <div class="category-header" onclick="toggleCategory('storage')">
+                            <div class="category-info">
+                                <i class="fas fa-hdd"></i>
+                                <div>
+                                    <h3>Storage (SSD/HDD)</h3>
+                                    <p>Store your files and programs</p>
+                                </div>
+                            </div>
+                            <div class="category-status">
+                                <span class="selected-item" id="storage-selected">Not Selected</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="category-content" id="storage-content">
+                            <div class="component-grid" id="storage-grid">
+                                <!-- Storage components will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-category" data-category="psu">
+                        <div class="category-header" onclick="toggleCategory('psu')">
+                            <div class="category-info">
+                                <i class="fas fa-plug"></i>
+                                <div>
+                                    <h3>Power Supply (PSU)</h3>
+                                    <p>Powers all your components</p>
+                                </div>
+                            </div>
+                            <div class="category-status">
+                                <span class="selected-item" id="psu-selected">Not Selected</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="category-content" id="psu-content">
+                            <div class="component-grid" id="psu-grid">
+                                <!-- PSU components will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-category" data-category="case">
+                        <div class="category-header" onclick="toggleCategory('case')">
+                            <div class="category-info">
+                                <i class="fas fa-cube"></i>
+                                <div>
+                                    <h3>PC Case</h3>
+                                    <p>Houses and protects components</p>
+                                </div>
+                            </div>
+                            <div class="category-status">
+                                <span class="selected-item" id="case-selected">Not Selected</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="category-content" id="case-content">
+                            <div class="component-grid" id="case-grid">
+                                <!-- Case components will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preset Builds Modal -->
+    <div id="preset-modal" class="modal">
+        <div class="modal-content preset-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-magic"></i> Preset Builds</h3>
+                <button class="modal-close" onclick="closePresetModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="preset-grid" id="preset-grid">
+                    <!-- Preset builds will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content cart-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-shopping-cart"></i> Shopping Cart (<span id="cart-modal-count">0</span>)</h3>
+                <button class="modal-close" onclick="toggleCart()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items"></div>
+                <div id="cart-summary" class="cart-summary"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Chat -->
+    <div id="chat-widget" class="chat-widget">
+        <div class="chat-header" onclick="toggleChatMinimize()">
+            <div class="chat-title">
+                <i class="fas fa-comments"></i>
+                Live Chat Support
+                <span class="chat-status">Online</span>
+            </div>
+            <div class="chat-controls">
+                <button id="chat-minimize" onclick="toggleChatMinimize()">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button onclick="toggleChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message agent-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! Need help building your PC? I'm here to assist!</p>
+                        <span class="message-time"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input-field" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+                <button onclick="sendChatMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Floating Button -->
+    <div id="chat-float-btn" class="chat-float-btn" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="auth.js"></script>
+    <script src="pc-builder.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

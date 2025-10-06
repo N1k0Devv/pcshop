@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Premium PC Parts & Gaming Hardware</title>
+    <meta name="description" content="Shop premium computer parts, gaming PCs, and accessories. Quality guaranteed, competitive prices, expert support.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="scrollToSection('hero')">
+                <div class="logo-icon"></div>
+                <span class="logo-text">TechStore</span>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#hero" class="nav-link" onclick="scrollToSection('hero')">Home</a>
+                <a href="pc-builder.html" class="nav-link">PC Builder</a>
+                <a href="#products" class="nav-link" onclick="scrollToSection('products')">Products</a>
+                <a href="my-builds.html" class="nav-link">My Builds</a>
+                <a href="#why-choose-us" class="nav-link" onclick="scrollToSection('why-choose-us')">Why Choose Us</a>
+                <a href="#contact" class="nav-link" onclick="scrollToSection('contact')">Contact</a>
+                <a href="login.html" class="nav-link" id="auth-link">Login</a>
+            </div>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="nav-icon" onclick="toggleChat()">
+                    <i class="fas fa-comments"></i>
+                </button>
+                <button class="nav-icon cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">🚀 New PC Builder Available</div>
+                    <h1 class="hero-title">
+                        Build Your <span class="gradient-text">Dream PC</span>
+                    </h1>
+                    <p class="hero-description">
+                        Discover premium computer parts, gaming PCs, and accessories from top brands. 
+                        Use our interactive PC Builder to create your perfect custom build.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="window.location.href='pc-builder.html'">
+                            <i class="fas fa-desktop"></i> Start Building
+                        </button>
+                        <button class="btn btn-outline" onclick="scrollToSection('products')">
+                            <i class="fas fa-shopping-bag"></i> Shop Products
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">50K+</div>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5K+</div>
+                            <div class="stat-label">Products</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">99.9%</div>
+                            <div class="stat-label">Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=600&h=400&fit=crop" alt="Gaming PC Setup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Shop by Category</h2>
+                <p>Find exactly what you need for your perfect setup</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" onclick="scrollToSection('products')">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=300&h=200&fit=crop" alt="Gaming PCs">
+                    </div>
+                    <div class="category-content">
+                        <h3>Gaming PCs</h3>
+                        <p>High-performance gaming rigs</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="scrollToSection('products')">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=300&h=200&fit=crop" alt="Components">
+                    </div>
+                    <div class="category-content">
+                        <h3>Components</h3>
+                        <p>CPUs, GPUs, RAM & more</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="scrollToSection('products')">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=300&h=200&fit=crop" alt="Laptops">
+                    </div>
+                    <div class="category-content">
+                        <h3>Laptops</h3>
+                        <p>Portable powerhouses</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="scrollToSection('products')">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300&h=200&fit=crop" alt="Accessories">
+                    </div>
+                    <div class="category-content">
+                        <h3>Accessories</h3>
+                        <p>Keyboards, mice & monitors</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Products</h2>
+                <p>Discover our extensive collection of high-quality PCs, components, and accessories</p>
+            </div>
+            
+            <div class="products-layout">
+                <!-- Filters Sidebar -->
+                <div class="filters-sidebar">
+                    <div class="filter-card">
+                        <div class="filter-header">
+                            <h3><i class="fas fa-filter"></i> Filters</h3>
+                            <button class="clear-filters" onclick="clearFilters()">Clear</button>
+                        </div>
+                        <div class="filter-group">
+                            <label>Category</label>
+                            <select id="category-filter" onchange="applyFilters()">
+                                <option value="all">All Categories</option>
+                                <option value="Desktop PCs">Desktop PCs</option>
+                                <option value="Laptops">Laptops</option>
+                                <option value="Components">Components</option>
+                                <option value="Cases">Cases</option>
+                                <option value="Controllers">Controllers</option>
+                                <option value="Mice">Mice</option>
+                                <option value="Monitors">Monitors</option>
+                                <option value="Keyboards">Keyboards</option>
+                                <option value="Headphones">Headphones</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Brand</label>
+                            <select id="brand-filter" onchange="applyFilters()">
+                                <option value="all">All Brands</option>
+                                <option value="Intel">Intel</option>
+                                <option value="AMD">AMD</option>
+                                <option value="NVIDIA">NVIDIA</option>
+                                <option value="ASUS">ASUS</option>
+                                <option value="Corsair">Corsair</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="Logitech">Logitech</option>
+                                <option value="Razer">Razer</option>
+                                <option value="Apple">Apple</option>
+                                <option value="Microsoft">Microsoft</option>
+                                <option value="Sony">Sony</option>
+                                <option value="SteelSeries">SteelSeries</option>
+                                <option value="HyperX">HyperX</option>
+                                <option value="LG">LG</option>
+                                <option value="Fractal Design">Fractal Design</option>
+                                <option value="NZXT">NZXT</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Price Range</label>
+                            <select id="price-filter" onchange="applyFilters()">
+                                <option value="all">All Prices</option>
+                                <option value="0-100">Under $100</option>
+                                <option value="100-200">$100 - $200</option>
+                                <option value="200-500">$200 - $500</option>
+                                <option value="500-1000">$500 - $1000</option>
+                                <option value="1000-2000">$1000 - $2000</option>
+                                <option value="2000+">Over $2000</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Sort By</label>
+                            <select id="sort-filter" onchange="applyFilters()">
+                                <option value="name">Name A-Z</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-content">
+                    <div class="products-info">
+                        <span id="products-count">Showing 0 products</span>
+                    </div>
+                    <div class="products-grid" id="products-grid">
+                        <!-- Products will be loaded here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose-us" class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Why Choose TechStore</div>
+                <h2>What Makes Us Special</h2>
+                <p>We're committed to providing the best shopping experience for all your tech needs</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50,000+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5,000+</div>
+                    <div class="stat-label">Products Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Customer Satisfaction</div>
+                </div>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Quality Guarantee</h3>
+                        <p>All products come with manufacturer warranty and our quality assurance</p>
+                        <div class="benefit-badge">100% Authentic</div>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Fast Delivery</h3>
+                        <p>Free shipping on orders over $100. Express delivery available nationwide</p>
+                        <div class="benefit-badge">Same Day Shipping</div>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Best Prices</h3>
+                        <p>Competitive pricing with regular discounts and bundle deals</p>
+                        <div class="benefit-badge">Price Match Promise</div>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Expert Support</h3>
+                        <p>24/7 technical support from certified professionals</p>
+                        <div class="benefit-badge">Live Chat Available</div>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>PC Builder Tool</h3>
+                        <p>Interactive PC builder with compatibility checking and preset builds</p>
+                        <div class="benefit-badge">Free to Use</div>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Easy Returns</h3>
+                        <p>30-day return policy with hassle-free exchanges</p>
+                        <div class="benefit-badge">No Questions Asked</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Get In Touch</div>
+                <h2>Contact Us</h2>
+                <p>Have questions about our products or need technical support? We're here to help!</p>
+            </div>
+            
+            <div class="contact-layout">
+                <div class="contact-info">
+                    <div class="contact-card" onclick="window.open('tel:+15551234567')">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Phone</h3>
+                            <p>+1 (555) 123-4567</p>
+                            <p>+1 (555) 765-4321</p>
+                            <div class="contact-badge">Mon-Fri 9AM-6PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card" onclick="window.open('mailto:support@techstore.com')">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Email</h3>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="23505653534c5157635746404b50574c51460d404c4e">[email&#160;protected]</a></p>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abd8cac7ced8ebdfcec8c3d8dfc4d9ce85c8c4c6">[email&#160;protected]</a></p>
+                            <div class="contact-badge">24/7 Response</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card" onclick="showMap()">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Address</h3>
+                            <p>123 Tech Street</p>
+                            <p>Silicon Valley, CA 94000</p>
+                            <div class="contact-badge">Visit Our Store</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card live-chat" onclick="toggleChat()">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Live Chat Support</h3>
+                            <p>Get instant help from our experts</p>
+                            <button class="btn btn-secondary">Start Chat</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <div class="contact-form-card">
+                        <h3><i class="fas fa-paper-plane"></i> Send us a Message</h3>
+                        <form id="contact-form" onsubmit="submitContactForm(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="6" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                            <div class="form-note">
+                                <i class="fas fa-check-circle"></i>
+                                We typically respond within 2-4 hours during business hours
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Map Section -->
+                    <div class="map-section" id="map-section" style="display: none;">
+                        <div class="map-container">
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <h4>TechStore Location</h4>
+                                <p>Visit our flagship store in Silicon Valley for hands-on product demos and expert consultation</p>
+                            </div>
+                            <div class="map-overlay">
+                                <h5>TechStore Flagship</h5>
+                                <p>123 Tech Street</p>
+                                <p>Silicon Valley, CA 94000</p>
+                                <p><strong>Hours:</strong></p>
+                                <p>Mon-Fri: 9AM-8PM</p>
+                                <p>Sat-Sun: 10AM-6PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon"></div>
+                        <span class="logo-text">TechStore</span>
+                    </div>
+                    <p>Your trusted partner for all computer hardware needs. Quality products, expert support, unbeatable prices.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#hero" onclick="scrollToSection('hero')">Home</a></li>
+                        <li><a href="pc-builder.html">PC Builder</a></li>
+                        <li><a href="#products" onclick="scrollToSection('products')">Products</a></li>
+                        <li><a href="my-builds.html">My Builds</a></li>
+                        <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#products" onclick="scrollToSection('products')">Desktop PCs</a></li>
+                        <li><a href="#products" onclick="scrollToSection('products')">Laptops</a></li>
+                        <li><a href="#products" onclick="scrollToSection('products')">Components</a></li>
+                        <li><a href="#products" onclick="scrollToSection('products')">Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#contact" onclick="scrollToSection('contact')">Contact Us</a></li>
+                        <li><a href="#" onclick="showToast('info', 'FAQ', 'FAQ page coming soon!')">FAQ</a></li>
+                        <li><a href="#" onclick="showToast('info', 'Shipping', 'Shipping info coming soon!')">Shipping Info</a></li>
+                        <li><a href="#" onclick="showToast('info', 'Returns', 'Returns page coming soon!')">Returns</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechStore. All rights reserved. Built with ❤️ for tech enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content cart-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-shopping-cart"></i> Shopping Cart (<span id="cart-modal-count">0</span>)</h3>
+                <button class="modal-close" onclick="toggleCart()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items"></div>
+                <div id="cart-summary" class="cart-summary"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content product-modal">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeProductModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="product-detail-content">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Chat -->
+    <div id="chat-widget" class="chat-widget">
+        <div class="chat-header" onclick="toggleChatMinimize()">
+            <div class="chat-title">
+                <i class="fas fa-comments"></i>
+                Live Chat Support
+                <span class="chat-status">Online</span>
+            </div>
+            <div class="chat-controls">
+                <button id="chat-minimize" onclick="toggleChatMinimize()">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button onclick="toggleChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message agent-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! Welcome to TechStore. How can I help you today?</p>
+                        <span class="message-time"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input-field" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+                <button onclick="sendChatMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Floating Button -->
+    <div id="chat-float-btn" class="chat-float-btn" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

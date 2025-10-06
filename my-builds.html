@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Builds - TechStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="window.location.href='index.html'">
+                <div class="logo-icon"></div>
+                <span class="logo-text">TechStore</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="pc-builder.html" class="nav-link">PC Builder</a>
+                <a href="my-builds.html" class="nav-link active">My Builds</a>
+                <a href="login.html" class="nav-link" id="auth-link">Login</a>
+            </div>
+            
+            <div class="nav-icons">
+                <button class="nav-icon cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- My Builds Section -->
+    <section class="my-builds">
+        <div class="container">
+            <div class="builds-header">
+                <h1><i class="fas fa-folder"></i> My Saved Builds</h1>
+                <p>Manage and view your custom PC configurations</p>
+                <div class="builds-actions">
+                    <button class="btn btn-primary" onclick="window.location.href='pc-builder.html'">
+                        <i class="fas fa-plus"></i> Create New Build
+                    </button>
+                </div>
+            </div>
+
+            <div id="builds-content">
+                <!-- Content will be loaded based on authentication status -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Build Detail Modal -->
+    <div id="build-detail-modal" class="modal">
+        <div class="modal-content build-detail-modal">
+            <div class="modal-header">
+                <h3 id="build-detail-title">Build Details</h3>
+                <button class="modal-close" onclick="closeBuildDetailModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="build-detail-content">
+                <!-- Build details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content cart-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-shopping-cart"></i> Shopping Cart (<span id="cart-modal-count">0</span>)</h3>
+                <button class="modal-close" onclick="toggleCart()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items"></div>
+                <div id="cart-summary" class="cart-summary"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="auth.js"></script>
+    <script src="my-builds.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
